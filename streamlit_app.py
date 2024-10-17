@@ -18,7 +18,6 @@ SYSTEM_PROMPT = """
 Потом представь результат в виде оценки от 1 до 10.
 """.strip()
 
-
 def request_gpt(system_prompt, user_prompt):
     response = client.chat.completions.create(
         model="gpt-4o",
