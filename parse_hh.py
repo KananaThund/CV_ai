@@ -22,29 +22,32 @@ def extract_vacancy_data(html):
     soup = BeautifulSoup(html, "html.parser")
 
     # Извлечение заголовка вакансии
-    title = soup.find("h1", {"data-qa": "vacancy-title"}).text.strip()
+    title = soup.find("h1", {"data-qa": "vacancy-title"})
+    title = title.text.strip() if title else "Не указано"
 
     # Извлечение зарплаты
-    salary = soup.find(
-        "span", {"data-qa": "vacancy-salary-compensation-type-net"}
-    ).text.strip()
+    salary = soup.find("span", {"data-qa": "vacancy-salary-compensation-type-net"})
+    salary = salary.text.strip() if salary else "Не указано"
 
     # Извлечение опыта работы
-    experience = soup.find("span", {"data-qa": "vacancy-experience"}).text.strip()
+    experience = soup.find("span", {"data-qa": "vacancy-experience"})
+    experience = experience.text.strip() if experience else "Не указано"
 
     # Извлечение типа занятости и режима работы
-    employment_mode = soup.find(
-        "p", {"data-qa": "vacancy-view-employment-mode"}
-    ).text.strip()
+    employment_mode = soup.find("p", {"data-qa": "vacancy-view-employment-mode"})
+    employment_mode = employment_mode.text.strip() if employment_mode else "Не указано"
 
     # Извлечение компании
-    company = soup.find("a", {"data-qa": "vacancy-company-name"}).text.strip()
+    company = soup.find("a", {"data-qa": "vacancy-company-name"})
+    company = company.text.strip() if company else "Не указано"
 
     # Извлечение местоположения
-    location = soup.find("p", {"data-qa": "vacancy-view-location"}).text.strip()
+    location = soup.find("p", {"data-qa": "vacancy-view-location"})
+    location = location.text.strip() if location else "Не указано"
 
     # Извлечение описания вакансии
-    description = soup.find("div", {"data-qa": "vacancy-description"}).text.strip()
+    description = soup.find("div", {"data-qa": "vacancy-description"})
+    description = description.text.strip() if description else "Не указано"
 
     # Извлечение ключевых навыков
     skills = [
@@ -68,7 +71,7 @@ def extract_vacancy_data(html):
 {description}
 
 ## Ключевые навыки
-- {'\n- '.join(skills)}
+- {'\n- '.join(skills) if skills else 'Не указаны'}
 """
 
     return markdown.strip()
