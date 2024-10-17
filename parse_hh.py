@@ -5,7 +5,8 @@ def get_html(url: str):
     return requests.get(
         url,
         headers={
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                          "Chrome/58.0.3029.110 Safari/537.36"
         },
     )
 
@@ -117,9 +118,11 @@ def extract_candidate_data(html):
 
     return markdown
 
+
 def get_candidate_info(url: str):
     response = get_html(url)
     return extract_candidate_data(response.text)
+
 
 def get_job_description(url: str):
     response = get_html(url)
