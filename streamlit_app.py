@@ -9,7 +9,6 @@ client = openai.Client(
     api_key=os.getenv("OPENAI_API_KEY")
 )
 
-
 SYSTEM_PROMPT = """
 Проскорь кандидата, насколько он подходит для данной вакансии.
 
